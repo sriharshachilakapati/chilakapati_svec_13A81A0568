@@ -286,8 +286,18 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		// Add your implementation here
-		return null;
+        double maxAvgMark = 0;
+
+        for (int i = 0; i < students.length; i++)
+            maxAvgMark = Math.max(maxAvgMark, students[i].getAvgMark());
+
+        List<Student> maxedStudents = new ArrayList<Student>();
+
+        for (int i = 0; i < students.length; i++)
+            if (students[i].getAvgMark() == maxAvgMark)
+                maxedStudents.add(students[i]);
+
+		return maxedStudents.toArray(new Student[maxedStudents.size()]);
 	}
 
 	@Override
