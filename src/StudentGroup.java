@@ -229,13 +229,17 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
+        if (firstDate == null || lastDate == null)
+            throw new IllegalArgumentException("date cannot be null");
+
         List<Student> datedStudents = new ArrayList<Student>();
 
         for (int i = 0; i < students.length; i++)
         {
             Date birthDate = students[i].getBirthDate();
 
-
+            if (birthDate.after(firstDate) && birthDate.before(lastDate))
+                datedStudents.add(students[i]);
         }
 
 		return datedStudents.toArray(new Student[datedStudents.size()]);
