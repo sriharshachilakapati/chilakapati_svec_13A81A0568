@@ -24,6 +24,8 @@ public class Main {
 
         for (Student s : dated)
             System.out.println(s.getFullName());
+
+        System.out.println(students[0].getAge());
 	}
 
     private static Date getDate(String dt) throws Exception {
