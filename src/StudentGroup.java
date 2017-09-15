@@ -105,7 +105,7 @@ public class StudentGroup implements StudentArrayOperation {
         Student[] newArray = new Student[students.length + 1];
 
         System.arraycopy(students, 0, newArray, 0, index);
-        System.arraycopy(students, index, newArray, index + 1, students.length - index);
+        System.arraycopy(students, index, newArray, index + 1, students.length - index + 1);
 
         newArray[index] = student;
         this.students = newArray;
