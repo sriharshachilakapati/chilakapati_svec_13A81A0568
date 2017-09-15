@@ -155,7 +155,15 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeFromElement(Student student) {
-		// Add your implementation here
+        if (student == null)
+            throw new IllegalArgumentException("student cannot be null");
+
+        for (int i = 0; i < students.length; i++)
+            if (student.getId() == students[i].getId())
+            {
+                removeFromIndex(i);
+                return;
+            }
 	}
 
 	@Override
