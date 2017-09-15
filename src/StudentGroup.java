@@ -177,7 +177,7 @@ public class StudentGroup implements StudentArrayOperation {
         if (index >= students.length)
             throw new IllegalArgumentException("Index cannot be greater than " + students.length);
 
-        Student[] newArray = new Student[index + 1];
+        Student[] newArray = new Student[students.length - index];
         System.arraycopy(students, index, newArray, 0, newArray.length);
 
         students = newArray;
