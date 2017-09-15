@@ -88,7 +88,7 @@ public class Student implements Comparable {
         int d1 = Integer.parseInt(formatter.format(birthDate));
         int d2 = Integer.parseInt(formatter.format(new Date()));
         int age = (d2-d1)/10000;
-        return age + 1;
+        return age;
     }
 
 	/**
