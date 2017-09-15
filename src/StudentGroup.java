@@ -168,16 +168,16 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeToIndex(int index) {
-        if (index < 0)
-            throw new IllegalArgumentException("Index cannot be less than 0");
-
-        if (index >= students.length)
-            throw new IllegalArgumentException("Index cannot be greater than " + students.length);
-
-        Student[] newArray = new Student[students.length - index - 1];
-        System.arraycopy(students, index, newArray, 0, newArray.length);
-
-        students = newArray;
+        // if (index < 0)
+        //     throw new IllegalArgumentException("Index cannot be less than 0");
+        //
+        // if (index >= students.length)
+        //     throw new IllegalArgumentException("Index cannot be greater than " + students.length);
+        //
+        // Student[] newArray = new Student[students.length - index - 1];
+        // System.arraycopy(students, index, newArray, 0, newArray.length);
+        //
+        // students = newArray;
 	}
 
 	@Override
