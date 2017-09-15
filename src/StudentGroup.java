@@ -63,7 +63,15 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void addFirst(Student student) {
-		// Add your implementation here
+        if (student == null)
+            throw new IllegalArgumentException("student cannot be null");
+
+		// Resize the array first
+        Student[] newArray = new Student[students.length + 1];
+        System.arraycopy(students, 0, newArray, 1, students.length);
+
+        newArray[0] = student;
+        this.students = newArray;
 	}
 
 	@Override
