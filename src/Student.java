@@ -1,12 +1,14 @@
 import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * Class that stores information about the concrete student
- * 
+ *
  * DO NOT REMOVE given methods, but you can add new methods/fields/constructor
  * and change the given methods implementation. For example you can change implementation for equals()
  * or hashCode() method
- * 
+ *
  */
 public class Student implements Comparable {
 
@@ -79,8 +81,16 @@ public class Student implements Comparable {
 	public boolean equals(Object obj) {
 		return super.equals(obj);
 	}
-	
-	
+
+    public int getAge()
+    {
+        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        int d1 = Integer.parseInt(formatter.format(birthDate));
+        int d2 = Integer.parseInt(formatter.format(new Date()));
+        int age = (d2-d1)/10000;
+        return age;
+    }
+
 	/**
 	 * DO NOT change this method it will be used during the task check
 	 */
