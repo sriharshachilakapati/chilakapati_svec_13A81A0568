@@ -2,6 +2,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * A fix-sized array of students
@@ -214,6 +216,15 @@ public class StudentGroup implements StudentArrayOperation {
         }
 	}
 
+    private int getDifference(Date one, Date two)
+    {
+        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        int d1 = Integer.parseInt(formatter.format(one));
+        int d2 = Integer.parseInt(formatter.format(two));
+        int diff = (Math.abs(d2-d1))/10000;
+        return diff;
+    }
+
 	@Override
 	public Student[] getByBirthDate(Date date) {
         if (date == null)
@@ -222,7 +233,7 @@ public class StudentGroup implements StudentArrayOperation {
         List<Student> datedStudents = new ArrayList<Student>();
 
         for (int i = 0; i < students.length; i++)
-            if (students[i].getBirthDate().compareTo(date) == 0)
+            if (getDifference(students[i].getBirthDate(), date) == 0)
                 datedStudents.add(students[i]);
 
 		return datedStudents.toArray(new Student[datedStudents.size()]);
