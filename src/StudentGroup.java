@@ -1,6 +1,7 @@
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A fix-sized array of students
@@ -247,8 +248,21 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
-		// Add your implementation here
-		return null;
+        if (date == null)
+            throw new IllegalArgumentException("date cannot be null");
+
+        List<Student> datedStudents = new ArrayList<Student>();
+
+        for (int i = 0; i < students.length; i++)
+        {
+            Date birthDate = students[i].getBirthDate();
+            long time = Math.abs(birthDate.getTime() - date.getTime());
+
+            if (TimeUnit.DAYS.convert(time, TimeUnit.MILLISECONDS) <= days)
+                datedStudents.add(students[i]);
+        }
+
+		return datedStudents.toArray(new Student[datedStudents.size()]);
 	}
 
 	@Override
