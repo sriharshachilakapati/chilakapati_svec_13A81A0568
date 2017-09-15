@@ -110,7 +110,18 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void remove(int index) {
-		// Add your implementation here
+        if (index < 0)
+            throw new IllegalArgumentException("Index cannot be less than 0");
+
+        if (index >= students.length)
+            throw new IllegalArgumentException("Index cannot be greater than " + students.length);
+
+        Student[] newArray = new Student[students.length + 1];
+
+        System.arraycopy(students, 0, newArray, 0, index);
+        System.arraycopy(students, index, newArray, index - 1, students.length - index);
+
+        this.students = newArray;
 	}
 
 	@Override
