@@ -1,4 +1,6 @@
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * A fix-sized array of students
@@ -213,8 +215,13 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
-		// Add your implementation here
-		return null;
+        List<Student> datedStudents = new ArrayList<Student>();
+
+        for (int i = 0; i < students.length; i++)
+            if (students[i].getBirthDate().compareTo(date) == 0)
+                datedStudents.add(students[i]);
+
+		return datedStudents.toArray(new Student[datedStudents.size()]);
 	}
 
 	@Override
