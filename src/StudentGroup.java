@@ -215,6 +215,9 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
+        if (date == null)
+            throw new IllegalArgumentException("date cannot be null");
+
         List<Student> datedStudents = new ArrayList<Student>();
 
         for (int i = 0; i < students.length; i++)
@@ -226,8 +229,16 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
-		// Add your implementation here
-		return null;
+        List<Student> datedStudents = new ArrayList<Student>();
+
+        for (int i = 0; i < students.length; i++)
+        {
+            Date birthDate = students[i].getBirthDate();
+
+
+        }
+
+		return datedStudents.toArray(new Student[datedStudents.size()]);
 	}
 
 	@Override
